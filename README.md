@@ -1,2 +1,2 @@
 # gpt3-nodejs-wrapper
-A wrapper which handle gpt-3 requests
+A wrapper which handles gpt-3 requests
