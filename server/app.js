@@ -1,5 +1,5 @@
 const express = require('express');
-const { PORT } = require('./config');
+const { PORT, URL } = require('./config');
 
 const app = express();
 
@@ -8,5 +8,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`server started at http://localhost:${PORT}`);
+  console.log(`server started at http://${URL}:${PORT}`);
 });

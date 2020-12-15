@@ -6,7 +6,7 @@
   "author": "erdem <erdem@jotform.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server/app.js"
+    "start": "pm2 start ./server/app.js --watch"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
