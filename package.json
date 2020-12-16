@@ -8,8 +8,8 @@
   "scripts": {
     "start:node": "node server/app.js",
     "start:server": "pm2 start dev.ecosystem.config.js",
-    "start:client": "parcel client/react/main.js -d client/output",
-    "build:client": "yarn clean:client && parcel build client/react/main.js -d client/output",
+    "start:client": "parcel client/react/main.js -d client/output --no-cache",
+    "build:client": "yarn clean:client && parcel build client/react/main.js -d client/output --no-cache",
     "clean:client": "rm -rf client/output"
   },
   "devDependencies": {
