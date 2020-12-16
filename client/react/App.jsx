@@ -59,7 +59,7 @@ const App = () => {
     <div className="app">
       <div className="app-header">
         <img className="logo" src="assets/openai-logo.png" alt="openai-logo" />
-        <h1>OpenAI React App</h1>
+        <h1>OpenAI React App with Node.js server</h1>
       </div>
       <div className="app-cta">
         <button
