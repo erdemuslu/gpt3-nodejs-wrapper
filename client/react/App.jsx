@@ -66,7 +66,7 @@ const App = () => {
           type="button"
           onClick={handleSearch}
         >
-          Send Search Request
+          Button Updated
         </button>
         <button
           type="button"
