@@ -2,8 +2,6 @@ const axios = require('axios');
 
 class OpenAiLib {
   constructor(apiKey) {
-    this.apiKey = apiKey;
-
     this.urlList = {
       search: '',
     };
@@ -18,6 +16,13 @@ class OpenAiLib {
       temperature: 0.7,
       top_p: 1,
     };
+
+    this.requestOptions = {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+    };
   }
 
   set generateUrl({ key, engine }) {
@@ -30,14 +35,7 @@ class OpenAiLib {
   async search(engine, options) {
     this.generateUrl = { key: 'search', engine };
 
-    const requestOptions = {
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const result = await axios.post(this.urlList.search, options, requestOptions);
+    const result = await axios.post(this.urlList.search, options, this.requestOptions);
 
     return result;
   }
