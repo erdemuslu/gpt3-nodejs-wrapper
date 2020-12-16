@@ -5,6 +5,6 @@ const MainController = require('./controllers/main.controller');
 const AiController = require('./controllers/ai.controller');
 
 router.get('/', MainController.main);
-router.post('/ai/search', AiController.search);
+router.post('/search', AiController.search);
 
 module.exports = router;

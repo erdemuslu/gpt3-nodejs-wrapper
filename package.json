@@ -6,7 +6,11 @@
   "author": "erdem <erdem@jotform.com>",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 start ./server/app.js --watch"
+    "start": "node server/app.js",
+    "start:server": "pm2 start dev.ecosystem.config.js",
+    "start:client": "parcel client/react/main.js -d client/output",
+    "build:client": "yarn clean:client && parcel build client/react/main.js -d client/output",
+    "clean:client": "rm -rf client/output"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
@@ -14,13 +18,19 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "sass": "^1.30.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "openai-api": "^1.0.13"
+    "openai-api": "^1.0.13",
+    "parcel-bundler": "^1.12.4",
+    "prop-types": "^15.7.2",
+    "pug": "^3.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }

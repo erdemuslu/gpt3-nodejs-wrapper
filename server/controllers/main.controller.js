@@ -1,11 +1,6 @@
 class MainController {
-  async main(req, res) {
-    const result = await {
-      data: 'HELLO!',
-      status: 200,
-    };
-
-    res.json(result);
+  main(req, res) {
+    res.render('index');
   }
 }
 
