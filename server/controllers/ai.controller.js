@@ -1,4 +1,4 @@
-const OpenAI = require('openai-api');
+const OpenAI = require('../lib/openai.lib');
 const { OPEN_AI_API_KEY } = require('../config');
 
 const openai = new OpenAI(OPEN_AI_API_KEY);
@@ -11,8 +11,7 @@ class AiController {
       query = '',
     } = req.body;
 
-    const result = await openai.search({
-      engine,
+    const result = await openai.search(engine, {
       documents,
       query,
     });

@@ -6,13 +6,15 @@
   "author": "erdem <erdem@jotform.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server/app.js",
+    "start:node": "node server/app.js",
     "start:server": "pm2 start dev.ecosystem.config.js",
     "start:client": "parcel client/react/main.js -d client/output",
     "build:client": "yarn clean:client && parcel build client/react/main.js -d client/output",
     "clean:client": "rm -rf client/output"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -22,6 +24,7 @@
     "sass": "^1.30.0"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

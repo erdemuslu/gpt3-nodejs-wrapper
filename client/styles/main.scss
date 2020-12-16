@@ -25,19 +25,42 @@ body {
 }
 
 .app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
 
-  .logo {
-    width: 240px;
-    height: auto;
-    margin-bottom: 32px;
-    animation-name: rotate;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .logo {
+      width: 240px;
+      height: auto;
+      animation-name: rotate;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+
+  &-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+
+    button {
+      outline: none;
+      border: 0;
+      background-color: #f2c177;
+      color: #171d23;
+      font-size: 16px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
   }
 }
