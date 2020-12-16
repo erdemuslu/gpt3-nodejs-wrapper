@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const App = () => {
+  const [data, setData] = useState(null);
+
   const handleSearchReq = async () => {
     try {
       const result = await axios.post('/ai/search', {
@@ -24,6 +26,7 @@ const App = () => {
     const response = await handleSearchReq();
 
     console.log('response', response.data.data);
+    setData(response.data.data);
   };
 
   const handleCompletionsReq = async () => {
@@ -31,7 +34,8 @@ const App = () => {
       const result = await axios.post('/ai/completions', {
         engine: 'davinci',
         prompt: 'Where is my',
-        max_tokens: 5,
+        max_tokens: 12,
+        temperature: 0.8,
       });
 
       return result;
@@ -44,6 +48,7 @@ const App = () => {
     const response = await handleCompletionsReq();
 
     console.log('response', response.data.data);
+    setData(response.data.data);
   };
 
   useEffect(() => {
@@ -70,6 +75,15 @@ const App = () => {
           Send Completions Request
         </button>
       </div>
+      {
+        data && (
+          <div className="app-result">
+            <pre>
+              {JSON.stringify(data)}
+            </pre>
+          </div>
+        )
+      }
     </div>
   );
 };

@@ -25,16 +25,9 @@ class AiController {
   }
 
   async completions(req, res) {
-    const {
-      engine = '',
-      prompt = '',
-      max_tokens = 5,
-    } = req.body;
+    const { engine, ...options } = req.body;
 
-    const result = await openai.completions(engine, {
-      prompt,
-      max_tokens,
-    });
+    const result = await openai.completions(engine, options);
 
     res.json({
       data: result.data,

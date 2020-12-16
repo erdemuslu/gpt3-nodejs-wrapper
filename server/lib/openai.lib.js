@@ -6,15 +6,10 @@ class OpenAiLib {
       search: '',
     };
 
-    this.completionsOptions = {
-      best_of: 1,
-      completions: 1,
-      context: '',
-      frequency_penalty: 0,
-      length: 64,
-      presence_penalty: 0,
-      temperature: 0.7,
-      top_p: 1,
+    this.completionsDefaultOptions = {
+      prompt: '',
+      max_tokens: 5,
+      temperature: 0.24,
     };
 
     this.requestOptions = {
@@ -25,7 +20,7 @@ class OpenAiLib {
     };
   }
 
-  set generateUrl({ key, engine }) {
+  set generateUrl({ key, engine = 'davinci' }) {
     this.urlList = {
       ...this.urlList,
       [key]: `https://api.openai.com/v1/engines/${engine}/${key}`,
@@ -43,9 +38,12 @@ class OpenAiLib {
   async completions(engine, options) {
     this.generateUrl = { key: 'completions', engine };
 
-    const result = await axios.post(this.urlList.completions, options, this.requestOptions);
+    const newOptions = {
+      ...this.completionsDefaultOptions,
+      ...options,
+    };
 
-    console.log('DATA', result.data);
+    const result = await axios.post(this.urlList.completions, newOptions, this.requestOptions);
 
     return result;
   }
