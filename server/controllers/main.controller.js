@@ -1,8 +1,11 @@
 class MainController {
   async main(req, res) {
-    const result = await 'Hello API';
+    const result = await {
+      data: 'HELLO!',
+      status: 200,
+    };
 
-    res.send(result);
+    res.json(result);
   }
 }
 
