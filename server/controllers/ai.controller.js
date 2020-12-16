@@ -23,6 +23,24 @@ class AiController {
       status: 200,
     });
   }
+
+  async completions(req, res) {
+    const {
+      engine = '',
+      prompt = '',
+      max_tokens = 5,
+    } = req.body;
+
+    const result = await openai.completions(engine, {
+      prompt,
+      max_tokens,
+    });
+
+    res.json({
+      data: result.data,
+      status: 200,
+    });
+  }
 }
 
 module.exports = new AiController();

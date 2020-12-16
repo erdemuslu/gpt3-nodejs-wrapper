@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 const App = () => {
-  const handlePostReq = async () => {
+  const handleSearchReq = async () => {
     try {
       const result = await axios.post('/ai/search', {
         engine: 'davinci',
@@ -20,10 +20,30 @@ const App = () => {
     }
   };
 
-  const onClick = async () => {
-    const response = await handlePostReq();
+  const handleSearch = async () => {
+    const response = await handleSearchReq();
 
-    console.log('response', response);
+    console.log('response', response.data.data);
+  };
+
+  const handleCompletionsReq = async () => {
+    try {
+      const result = await axios.post('/ai/completions', {
+        engine: 'davinci',
+        prompt: 'Where is my',
+        max_tokens: 5,
+      });
+
+      return result;
+    } catch (err) {
+      return err;
+    }
+  };
+
+  const handleCompletions = async () => {
+    const response = await handleCompletionsReq();
+
+    console.log('response', response.data.data);
   };
 
   useEffect(() => {
@@ -39,9 +59,15 @@ const App = () => {
       <div className="app-cta">
         <button
           type="button"
-          onClick={onClick}
+          onClick={handleSearch}
         >
-          Send Request
+          Send Search Request
+        </button>
+        <button
+          type="button"
+          onClick={handleCompletions}
+        >
+          Send Completions Request
         </button>
       </div>
     </div>

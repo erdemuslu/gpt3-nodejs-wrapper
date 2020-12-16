@@ -6,7 +6,7 @@ class OpenAiLib {
       search: '',
     };
 
-    this.options = {
+    this.completionsOptions = {
       best_of: 1,
       completions: 1,
       context: '',
@@ -36,6 +36,16 @@ class OpenAiLib {
     this.generateUrl = { key: 'search', engine };
 
     const result = await axios.post(this.urlList.search, options, this.requestOptions);
+
+    return result;
+  }
+
+  async completions(engine, options) {
+    this.generateUrl = { key: 'completions', engine };
+
+    const result = await axios.post(this.urlList.completions, options, this.requestOptions);
+
+    console.log('DATA', result.data);
 
     return result;
   }
