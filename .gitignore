@@ -110,3 +110,4 @@ credentials
 .DS_Store
 **/.DS_Store
 client/output/
+.vscode
