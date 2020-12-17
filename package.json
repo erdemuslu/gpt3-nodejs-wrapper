@@ -6,8 +6,7 @@
   "author": "erdem <erdem@jotform.com>",
   "license": "MIT",
   "scripts": {
-    "start:node": "node server/app.js",
-    "start:server": "pm2 start dev.ecosystem.config.js",
+    "start": "node server/app.js",
     "start:client": "parcel client/react/main.js -d client/output",
     "build:client": "yarn clean:client && parcel build client/react/main.js -d client/output",
     "clean:client": "rm -rf client/output"
@@ -27,6 +26,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
