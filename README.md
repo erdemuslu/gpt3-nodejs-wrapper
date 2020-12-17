@@ -1,7 +1,7 @@
 # gpt3-nodejs-wrapper
 A wrapper which handles gpt-3 requests
 
-Use this to run server in your local
+To run & watch server
 ```
 pm2 start ecosystem.config.js --env development
 ```
