@@ -16,6 +16,7 @@ class OpenAiLib {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     };
   }
@@ -36,16 +37,38 @@ class OpenAiLib {
   }
 
   async completions(engine, options) {
-    this.generateUrl = { key: 'completions', engine };
+    try {
+      this.generateUrl = { key: 'completions', engine };
 
-    const newOptions = {
-      ...this.completionsDefaultOptions,
-      ...options,
-    };
+      const newOptions = {
+        ...this.completionsDefaultOptions,
+        ...options,
+      };
 
-    const result = await axios.post(this.urlList.completions, newOptions, this.requestOptions);
+      const result = await axios.post(this.urlList.completions, newOptions, this.requestOptions);
 
-    return result;
+      return result;
+    } catch (err) {
+      return {
+        data: {
+          err,
+        },
+      };
+    }
+  }
+
+  async generate(engine, options) {
+    try {
+      this.generateUrl = { key: 'generate', engine };
+
+      const result = await axios.post(this.urlList.generate, options, this.requestOptions);
+
+      return result;
+    } catch (err) {
+      return {
+        data: err,
+      };
+    }
   }
 }
 

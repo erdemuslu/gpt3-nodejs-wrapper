@@ -7,5 +7,6 @@ const AiController = require('./controllers/ai.controller');
 router.get('/', MainController.main);
 router.post('/ai/search', AiController.search);
 router.post('/ai/completions', AiController.completions);
+router.post('/ai/generate', AiController.generate);
 
 module.exports = router;

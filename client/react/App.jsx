@@ -51,6 +51,30 @@ const App = () => {
     setData(response.data.data);
   };
 
+  const handleGenerateReq = async () => {
+    try {
+      const result = await axios.post('/ai/generate', {
+        engine: 'davinci',
+        context: 'Question: What is JavaScript?',
+        stream: false,
+        stop: '.',
+        length: 96,
+        temperature: 0.8,
+      });
+
+      return result;
+    } catch (err) {
+      return err;
+    }
+  };
+
+  const handleGenerate = async () => {
+    const response = await handleGenerateReq();
+
+    console.log('response', response.data.data.data[0].text.join(''));
+    setData(response.data.data.data[0].text.join(''));
+  };
+
   useEffect(() => {
     console.log('App rendered');
   }, []);
@@ -66,13 +90,19 @@ const App = () => {
           type="button"
           onClick={handleSearch}
         >
-          Button Updated
+          Send Search Request
         </button>
         <button
           type="button"
           onClick={handleCompletions}
         >
           Send Completions Request
+        </button>
+        <button
+          type="button"
+          onClick={handleGenerate}
+        >
+          Send Generate Request
         </button>
       </div>
       {

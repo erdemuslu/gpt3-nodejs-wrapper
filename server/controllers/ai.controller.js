@@ -34,6 +34,17 @@ class AiController {
       status: 200,
     });
   }
+
+  async generate(req, res) {
+    const { engine, ...options } = req.body;
+
+    const result = await openai.generate(engine, options);
+
+    res.json({
+      data: result.data,
+      status: 200,
+    });
+  }
 }
 
 module.exports = new AiController();
