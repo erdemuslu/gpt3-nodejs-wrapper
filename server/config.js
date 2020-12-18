@@ -8,7 +8,7 @@ const userId = parseInt(userIdCmd, 10);
 const PORT = userId + 20000;
 
 const {
-  NODE_ENV = 'development',
+  NODE_ENV,
 } = process.env;
 const env = dotenv.config().parsed;
 

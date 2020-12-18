@@ -23,5 +23,6 @@ app.use(bodyParser.json());
 app.use('/', router);
 
 app.listen(PORT, () => {
-  console.log(`server is starting at http://${isDevelopment ? 'localhost' : URL}:${PORT}`);
+  console.log('origin', isDevelopment ? '*' : `http://${URL}`);
+  console.log(`server is starting at ${PORT}`);
 });
